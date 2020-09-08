@@ -3,12 +3,12 @@ import { reducer, initialState } from "../reducers/reducer.js";
 
 export const TodoListForm = props => {
     const [ state, dispatch ] = useReducer(reducer, initialState);
+    const [ todoItem, setTodoItem ] = useState("");
 
     
 
 
     return (
-        <>
-        </>
+        <div></div>
     )
 }
