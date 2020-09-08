@@ -26,8 +26,13 @@ export const reducer = (state, action) => {
             const list = [...state, newState]
             console.log(list);
             return [...state, newState];
-        
-        
+        case "COMPLETED":
+            return state.map(item => {
+                if(item.id === action.payload.id) {
+                    item.completed = !item.completed;
+                }
+                return item;
+            })
 
         default:
             return state;

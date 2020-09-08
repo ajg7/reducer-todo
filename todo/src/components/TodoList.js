@@ -4,9 +4,9 @@ import { reducer, initialState } from "../reducers/reducer";
 
 const TodoList = props => {
     const [ state, dispatch ] = useReducer(reducer, initialState);
-    const [ todoItem, setTodoItem ] = useState("");
+    const [ todoItem, setTodoItem ] = useState([]);
 
-
+    console.log(state)
     const handleChanges = event => {
         console.log(event.target.value);
         setTodoItem(event.target.value);
@@ -14,12 +14,18 @@ const TodoList = props => {
 
     const submit = event => {
         event.preventDefault();
+        
+    }
+
+    const checkboxHandler = clickedTodoItem => {
+        setTodoItem([])
+        console.log(clickedTodoItem)
     }
 
 
     return(
         <>
-            <div>
+            <div className="todo-list-form">
                 <form onSubmit={submit}>
                     <label>
                         <input 
@@ -32,11 +38,12 @@ const TodoList = props => {
                     <button onClick={() => dispatch({type: "ADD_ITEM", payload: todoItem})}>Add Item</button>
                 </form>
             </div>
-
-            <div>
+            <div className="todo-list">
                 {state.map(todoItem => {
                     return(
-                        <p>{todoItem.item}</p>
+                        <div onClick={() => dispatch({type: "COMPLETED", payload: todoItem})}>
+                            <p>{todoItem.item}</p>
+                        </div>
                     )
                 })}
             </div>
