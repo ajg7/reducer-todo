@@ -33,8 +33,14 @@ export const reducer = (state, action) => {
                 }
                 return item;
             })
-        case "Clear_Completed":
-            return state.filter(item => item.completed ? console.log(item): item)
+        case "CLEAR_COMPLETED":
+            console.log("Hello")
+            return state.filter(item => {
+                if(item.completed === false) {
+                    return true;
+                }
+                return false;
+            })
         default:
             return state;
     }
