@@ -42,7 +42,7 @@ const TodoList = props => {
                 {state.map(todoItem => {
                     return(
                         <div onClick={() => dispatch({type: "COMPLETED", payload: todoItem})}>
-                            <p>{todoItem.item}</p>
+                            <p className={todoItem.completed ? "todo-completed" : "todo"}>{todoItem.item}</p>
                         </div>
                     )
                 })}
