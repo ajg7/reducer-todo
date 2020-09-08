@@ -14,5 +14,30 @@ export const initialState = [
 ]
 
 export const reducer = (state, action) => {
-    return state;
+    switch(action.type) {
+        case "ADD_ITEM":
+            if (action.payload === "") {
+                return state;
+            }
+            const newState = {
+                item: action.payload,
+                completed: false,
+                item: new Date()
+            }
+            return [ ...state, newState]
+        case "COMPLETED":
+            return state.map(item => {
+                if(item.id === action.payload) {
+                    return {...item, completed: !item.completed }
+                } else {
+                    return item
+                }
+            })
+        case "REMOVE_COMPLETED":
+            return state.filter(item => !item.completed);
+        case "REMOVE_ALL": 
+            return [];
+        default:
+            return state;
+    }
 }

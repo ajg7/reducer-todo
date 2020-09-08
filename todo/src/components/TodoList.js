@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useReducer, useState } from "react";
+import { reducer, initialState } from "../reducers/reducer";
 
-export const TodoList = () => {
+
+const TodoList = props => {
+    const [ state, dispatch ] = useReducer(reducer, initialState);
+    const [ todoItem, setTodoItem ] = useState("");
+
 
     return(
-        <>
-            <h1>Goes here</h1>
-        </>
+        <div className="Todo-List">
+            <button onClick={() => dispatch({type: "ADD_ITEM"})}>Add Item</button>
+        </div>
     )
 }
+
+export default TodoList;
