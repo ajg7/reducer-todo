@@ -4,15 +4,32 @@ export const initialState = [
     {
         item: "Learn about reducers'",
         completed: false,
-        id: 1
+        id: new Date()
     },
     {
         item: "Pick up Groceries",
         completed: false,
-        id: 2
+        id: new Date()
     }
 ]
 
 export const reducer = (state, action) => {
-    return state;
+    
+    switch(action.type) {
+        case "ADD_ITEM":
+            const newState =
+                {
+                    item: action.payload,
+                    completed: false,
+                    id: new Date()
+                }
+            const testState = [...state, newState]
+            console.log(testState);
+            return [...state, newState];
+        
+        
+
+        default:
+            return state;
+    }
 }
