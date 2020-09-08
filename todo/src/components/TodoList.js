@@ -47,6 +47,9 @@ const TodoList = props => {
                     )
                 })}
             </div>
+            <div className="clear-button">
+                <button onClick={() => dispatch({ type: "CLEAR_COMPLETED" })}>Clear Completed</button>
+            </div>
         </>
     )
 }
