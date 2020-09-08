@@ -7,10 +7,8 @@ const TodoList = props => {
     const [ todoItem, setTodoItem ] = useState("");
 
 
-
     return(
         <>
-    
             <div>
                 {state.map(todoItem => {
                     return(

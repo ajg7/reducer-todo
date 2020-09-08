@@ -17,14 +17,14 @@ export const reducer = (state, action) => {
     
     switch(action.type) {
         case "ADD_ITEM":
-            const newState =
+            let newState =
                 {
                     item: action.payload,
                     completed: false,
                     id: new Date()
                 }
-            const testState = [...state, newState]
-            console.log(testState);
+            const list = [...state, newState]
+            console.log(list);
             return [...state, newState];
         
         
